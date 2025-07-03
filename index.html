@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paramount FSE - Intelligent Support Solutions</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
@@ -13,91 +18,321 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
-        .particle {
-            position: absolute; width: 2px; height: 2px;
-            background: linear-gradient(45deg, #00d4ff, #5a67d8);
-            border-radius: 50%; animation: float 6s ease-in-out infinite;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #00d4ff, #5a67d8);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
             50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
         }
+
+        /* Header */
         header {
-            padding: 20px 0; backdrop-filter: blur(10px);
+            padding: 20px 0;
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky; top: 0; z-index: 100;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        nav { display: flex; justify-content: space-between; align-items: center; }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .logo {
-            font-size: 28px; font-weight: 800;
+            font-size: 28px;
+            font-weight: 800;
             background: linear-gradient(135deg, #00d4ff, #5a67d8);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .nav-links { display: flex; list-style: none; gap: 30px; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
         .nav-links a {
-            color: #ffffff; text-decoration: none; font-weight: 500;
-            transition: all 0.3s ease; position: relative;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
         }
-        .nav-links a:hover { color: #00d4ff; transform: translateY(-2px); }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+            transform: translateY(-2px);
+        }
+
         .nav-links a::after {
-            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
-            background: linear-gradient(135deg, #00d4ff, #5a67d8); transition: width 0.3s ease;
-        }
-        .nav-links a:hover::after { width: 100%; }
-        .cta-button {
-            display: inline-block; padding: 15px 35px;
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
             background: linear-gradient(135deg, #00d4ff, #5a67d8);
-            color: #ffffff; text-decoration: none; border-radius: 50px;
-            font-weight: 600; transition: all 0.3s ease;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #b3b3b3;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #00d4ff, #5a67d8);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
             animation: slideInUp 1s ease-out 0.4s both;
-            cursor: pointer; border: none; outline: none;
         }
+
         .cta-button:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 212, 255, 0.4);
         }
-        .user-info { margin-top: 15px; color: #00d4ff; }
-        .hidden { display: none !important; }
-        .hero { padding: 100px 0; text-align: center; position: relative; }
-        .hero-content { z-index: 10; position: relative; }
-        .hero h1 {
-            font-size: 4rem; font-weight: 900; margin-bottom: 20px;
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
             background: linear-gradient(135deg, #ffffff, #00d4ff);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; animation: slideInUp 1s ease-out;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .hero p {
-            font-size: 1.3rem; margin-bottom: 40px; color: #b3b3b3;
-            max-width: 600px; margin-left: auto; margin-right: auto;
-            animation: slideInUp 1s ease-out 0.2s both;
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #00d4ff, #5a67d8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        .feature-card p {
+            color: #b3b3b3;
+            line-height: 1.6;
+        }
+
+        /* Chat Section */
+        .chat-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .chat-section h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .chat-section p {
+            font-size: 1.2rem;
+            color: #b3b3b3;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .chat-demo {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 60px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+
+        /* Footer */
         footer {
-            padding: 60px 0; background: rgba(0, 0, 0, 0.5);
+            padding: 60px 0;
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
         }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #b3b3b3;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #00d4ff;
+        }
+
         .footer-bottom {
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #666;
         }
+
+        /* Animations */
         @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chat-demo {
+                padding: 30px;
+            }
+        }
+
+        /* Glassmorphism effects */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
     <div class="particles"></div>
+
     <header>
         <nav class="container">
             <div class="logo">Paramount FSE</div>
@@ -106,145 +341,87 @@
             </ul>
         </nav>
     </header>
-    <div style="text-align:center; margin-top:30px;">
-        <button id="login-btn" class="cta-button">Sign in with Paramount</button>
-        <button id="logout-btn" class="cta-button hidden">Logout</button>
-        <div id="user-info" class="user-info"></div>
-    </div>
-    <div id="main-content" class="hidden">
-        <section class="hero" id="home">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Intelligent Support Solutions</h1>
-                    <p>Meet Zara — your futuristic guide to all intercompany queries. Click the chat icon to get started!.</p>
-                    <a href="#support" class="cta-button" id="helpbot-btn">Paramount HelpBot</a>
-                </div>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Intelligent Support Solutions</h1>
+                <p>Meet Zara — your futuristic guide to all intercompany queries. Click the chat icon to get started!.</p>
+                <a href="#support" class="cta-button" id="helpbot-btn">Paramount HelpBot</a>
             </div>
-        </section>
-        <!-- Add more content here if needed -->
-    </div>
+        </div>
+    </section>
+
     <footer id="contact">
         <div class="footer-bottom">
             <p>&copy; 2025 Paramount FSE. All rights reserved. | Empowering intelligent support solutions.</p>
         </div>
     </footer>
-    <!-- Auth0 SPA SDK -->
-    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
-    <script>
-      const auth0Domain = 'dev-hnk5n13j8t1l01kr.us.auth0.com';
-      const auth0ClientId = '5gHPRINLTV35wIprxUYqTM7QBx3lJbhb';
-      let auth0 = null;
-      let voiceflowWidgetLoaded = false;
 
-      async function configureClient() {
-        auth0 = await createAuth0Client({
-          domain: auth0Domain,
-          client_id: auth0ClientId,
-          cacheLocation: 'localstorage',
-          useRefreshTokens: true
-        });
-      }
-
-      function loadVoiceflowWidget() {
-        if (voiceflowWidgetLoaded) return;
-        voiceflowWidgetLoaded = true;
-        var v = document.createElement('script');
-        v.onload = function() {
+    <script type="text/javascript">
+      (function(d, t) {
+          var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+          v.onload = function() {
             window.voiceflow.chat.load({
-                verify: { projectID: '685f9e90de64374aed262500' },
-                url: 'https://general-runtime.voiceflow.com',
-                versionID: '685f9e90de64374aed262501',
-                voice: {
-                    url: "https://runtime-api.voiceflow.com"
-                }
+              verify: { projectID: '685f9e90de64374aed262500' },
+              url: 'https://general-runtime.voiceflow.com',
+              versionID: '685f9e90de64374aed262501',
+              voice: {
+                url: "https://runtime-api.voiceflow.com"
+              }
             });
-        };
-        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-        v.type = "text/javascript";
-        document.body.appendChild(v);
-      }
-
-      async function updateUI() {
-        const isAuthenticated = await auth0.isAuthenticated();
-        document.getElementById('login-btn').classList.toggle('hidden', isAuthenticated);
-        document.getElementById('logout-btn').classList.toggle('hidden', !isAuthenticated);
-        document.getElementById('main-content').classList.toggle('hidden', !isAuthenticated);
-
-        if (isAuthenticated) {
-          const user = await auth0.getUser();
-          document.getElementById('user-info').innerText = `Signed in as: ${user.name || user.email}`;
-          loadVoiceflowWidget(); // Only load after login
-        } else {
-          document.getElementById('user-info').innerText = '';
-        }
-      }
-
-      async function login() {
-        await auth0.loginWithRedirect({
-          authorizationParams: {
-            redirect_uri: window.location.origin
           }
-        });
-      }
-
-      function logout() {
-        auth0.logout({
-          logoutParams: {
-            returnTo: window.location.origin
-          }
-        });
-      }
-
-      window.onload = async () => {
-        await configureClient();
-        if (window.location.search.includes('code=') && window.location.search.includes('state=')) {
-          await auth0.handleRedirectCallback();
-          window.history.replaceState({}, document.title, '/');
-        }
-        updateUI();
-        document.getElementById('login-btn').addEventListener('click', login);
-        document.getElementById('logout-btn').addEventListener('click', logout);
-      };
+          v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+      })(document, 'script');
     </script>
-    <!-- HelpBot Button Script -->
+
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const btn = document.getElementById('helpbot-btn');
         if (btn) {
           btn.addEventListener('click', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent default anchor behavior
+            // Wait until the widget is loaded
             if (window.voiceflow && window.voiceflow.chat && typeof window.voiceflow.chat.open === 'function') {
               window.voiceflow.chat.open();
             } else {
+              // If the widget isn't loaded yet, try again after a short delay
               const interval = setInterval(function() {
                 if (window.voiceflow && window.voiceflow.chat && typeof window.voiceflow.chat.open === 'function') {
                   window.voiceflow.chat.open();
                   clearInterval(interval);
                 }
               }, 300);
+              // Optionally, stop trying after a few seconds
               setTimeout(() => clearInterval(interval), 5000);
             }
           });
         }
       });
     </script>
-    <!-- Particles Animation Script -->
+
     <script>
         function createParticles() {
             const particlesContainer = document.querySelector('.particles');
             const particleCount = 50;
+
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
+                
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
+                
                 particle.style.animationDelay = Math.random() * 6 + 's';
+                
                 const size = Math.random() * 3 + 1;
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
+                
                 particlesContainer.appendChild(particle);
             }
         }
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const target = document.querySelector(this.getAttribute('href'));
@@ -257,7 +434,31 @@
                 }
             });
         });
+
         window.addEventListener('load', createParticles);
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
     </script>
 </body>
 </html>
